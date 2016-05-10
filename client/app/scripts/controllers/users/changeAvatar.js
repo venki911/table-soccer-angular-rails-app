@@ -43,7 +43,7 @@
         angular.element('#submit').triggerHandler('click');
 
         Upload.upload({
-          url: $rootScope.defaultHost + '/update_avatar.json',
+          url: '/api/update_avatar.json',
           method: 'POST',
           data: {
             id: $rootScope.user.id,
