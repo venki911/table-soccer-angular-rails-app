@@ -46,7 +46,7 @@ class TournamentsController < ApplicationController
 
   def destroy
     @tournament = Tournament.where(id: params[:ids])
-    if @tournament.delete_all
+    if @tournament.destroy_all
       head :no_content
     else
       render json: @tournament.errors, status: :unprocessable_entity
