@@ -561,4 +561,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-connect-proxy');
 
   grunt.registerTask('heroku:production', 'build');
+  grunt.registerTask('heroku:development', 'clean less mincss');
 };
