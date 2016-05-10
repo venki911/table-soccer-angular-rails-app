@@ -84,4 +84,4 @@ production:
   <<: *default
   database: table_soccer_api_production
   username: user
-  password: <%= ENV['TABLE_SOCCER_API_DATABASE_PASSWORD'] %>
+  password: 123
