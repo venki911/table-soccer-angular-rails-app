@@ -1,7 +1,13 @@
 {
   "name": "tablesoccerclientangular",
   "private": true,
-  "devDependencies": {
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "karma start test/karma.conf.js"
+  },
+  "dependencies": {
     "autoprefixer-core": "^5.2.1",
     "connect-modrewrite": "^0.9.0",
     "grunt": "^0.4.5",
@@ -35,15 +41,7 @@
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
     "phantomjs-prebuilt": "^2.1.7",
-    "time-grunt": "^1.0.0"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "scripts": {
-    "test": "karma start test/karma.conf.js"
-  },
-  "dependencies": {
+    "time-grunt": "^1.0.0",
     "jquery-datetimepicker": "^2.5.3"
   }
 }
