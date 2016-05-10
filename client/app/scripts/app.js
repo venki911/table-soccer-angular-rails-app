@@ -28,9 +28,9 @@ angular
   })
   .config(function ($authProvider, $stateProvider, $urlRouterProvider, $locationProvider, defaultHost) {
     $authProvider.configure({
-      apiUrl: 'http://localhost:3000/api',//defaultHost.url,
-      confirmationSuccessUrl: 'http://localhost:9000/sign_in',
-      passwordResetSuccessUrl: 'http://localhost:9000/reset_password',
+      apiUrl: defaultHost.url,
+      confirmationSuccessUrl: 'https://table-soccer-tournaments.herokuapp.com/sign_in',
+      passwordResetSuccessUrl: 'https://table-soccer-tournaments.herokuapp.com/reset_password',
       authProviderPaths: {
         facebook: '/auth/facebook'
       }
@@ -84,7 +84,7 @@ angular
     // $locationProvider.html5Mode(true);
   })
   .run(['$rootScope', '$location', 'defaultHost', '$auth', function ($rootScope, $location, defaultHost, $auth) {
-    $rootScope.defaultHost = 'http://localhost:3000';
+    $rootScope.defaultHost = 'https://table-soccer-tournaments.herokuapp.com';//'http://localhost:3000';
 
     $rootScope.$on('auth:login-success', function () {
       $location.path('/');
