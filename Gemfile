@@ -15,6 +15,7 @@ gem 'devise_token_auth'
 gem 'omniauth-facebook'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'figaro'
+gem 'compass'
 
 # File upload
 gem 'carrierwave'
