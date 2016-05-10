@@ -2,7 +2,7 @@
   "name": "table-soccer-client-angular",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "1.5.5",
+    "angular": "~1.5.x",
     "bootstrap-sass-official": "^3.2.0",
     "angular-animate": "~1.5.x",
     "angular-cookies": "~1.5.x",
@@ -19,6 +19,9 @@
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
+  },
+  "resolutions": {
+    "angular": "~1.5.x"
   },
   "appPath": "app",
   "moduleName": "tableSoccerClientAngularApp",
