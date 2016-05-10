@@ -85,4 +85,3 @@ production:
   database: table_soccer_api_production
   username: user
   password: 123
-  host: localhost
