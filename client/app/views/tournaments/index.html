@@ -1,0 +1,26 @@
+<a ng-if="user.is_admin" class="btn btn-primary" ng-click="tournaments.openNewModalWindow()">New tournament</a>
+
+<h2>Tournaments</h2>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Place</th>
+    <th colspan="3">Date&time</th>
+  </tr>
+  <tr ng-repeat="tournament in tournaments.tournaments">
+    <td ng-if="!tournament.deleting" class="col-md-3"><a ui-sref="tournaments_show({id: tournament.id})">{{tournament.name}}</a></td>
+    <td ng-if="!tournament.deleting" class="col-md-2">{{tournament.tourn_type}}</td>
+    <td ng-if="!tournament.deleting" class="col-md-2">{{tournament.place}}</td>
+    <td ng-if="!tournament.deleting" class="col-md-2">{{tournament.datetime | date:'MMM d, y H:mm'}}</td>
+    <td ng-if="user.is_admin" ng-hide="tournament.deleting" class="col-md-1">
+      <span class="glyphicon glyphicon-edit" ng-click="tournaments.editModalWindow(tournament)"></span>
+    </td>
+    <td ng-if="user.is_admin" ng-hide="tournament.deleting" class="col-md-1">
+      <span class="glyphicon glyphicon-trash" ng-click="tournament.deleting = true; tournaments.deletedItems.push(tournament.id)"></span>
+    </td>
+    <td colspan="6" class="deleted-row bg-warning col-md-12" ng-show="tournament.deleting">
+      {{tournament.name}} will be removed <span ng-click="tournament.deleting = false; tournaments.undoDeleting(tournament.id)">undo</span></td>
+  </tr>
+</table>
+<button ng-show="user.is_admin && tournaments.deletedItems.length > 0" class="btn btn-success center-block" ng-click="tournaments.confirmDelete()">Confirm delete</button>

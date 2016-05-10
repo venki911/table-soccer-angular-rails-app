@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="user-avatar">
+        <img ng-src="{{defaultHost}}{{user.avatar.url}}" class="center-block">
+        <br>
+        <button class="btn btn-primary center-block" ng-click="profile.changeAvatarModal()">Change avatar</button>
+        <br>
+        <div id="upload-form">
+
+        </div>
+
+
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Profile information</h3>
+        </div>
+        <div class="panel-body">
+          <p><span class="profile-field">First name: </span>{{user.first_name}}</p>
+          <p><span class="profile-field">Last name: </span>{{user.last_name}}</p>
+          <p><span class="profile-field">E-mail: </span>{{user.email}}</p>
+          <button ng-if="user.provider !== 'facebook'" ng-click="profile.changePasswordModal()" class="btn btn-danger">Change password</button>
+        </div>
+      </div>
+
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">My teams</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <tr>
+              <th>Name</th>
+            </tr>
+            <% @teams.each do |team| %>
+            <tr>
+              <td><%= link_to team.name, team %></td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Enable votes</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <tr>
+              <th>id</th>
+              <th>Tournament</th>
+            </tr>
+            <% @votes.each do |user_vote| %>
+            <% if vote_enable?(user_vote.vote,user_vote) %>
+            <tr>
+              <td><%= link_to user_vote.vote.id, vote_path(id: user_vote.vote_id) %></td>
+              <td><%= link_to user_vote.vote.tournament.name, user_vote.vote.tournament %></td>
+            </tr>
+            <% end %>
+            <% end %>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">My tournaments</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Place</th>
+              <th>Date</th>
+            </tr>
+            <tr ng-repeat=" tournament in profile.tournaments">
+              <td>{{tournament.name}}</td>
+              <td>{{tournament.tourn_type}}</td>
+              <td>{{tournament.place}}</td>
+              <td>{{tournament.datetime | date: 'MMM d, y H:mm'}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

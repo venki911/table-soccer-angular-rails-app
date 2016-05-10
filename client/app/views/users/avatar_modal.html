@@ -1,0 +1,14 @@
+<button class="btn btn-primary" ng-model="picFile" ngf-select accept="image/*">select</button>
+<br><br>
+<div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+     class="cropArea" ng-class="{'drop-box' : !picFile}"> <span ng-if="!picFile" class="drop-text">Drop or select picture</span>
+  <img-crop image="picFile  | ngfDataUrl"  area-type="square" result-image-size="215"
+            result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+  </img-crop>
+</div>
+<br>
+<div ng-if="picFile">
+  <img class="center-block" ng-src="{{croppedDataUrl}}" />
+</div>
+<input type="text" required ng-model="picFile.name" style="display: none">
+<button id="submit" ng-disabled="!picFile" ng-click="submit(croppedDataUrl, picFile.name); req='qwe'" class="btn btn-success" ng-required="true" style="display: none">Confirm</button>

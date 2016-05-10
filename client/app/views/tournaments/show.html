@@ -1,0 +1,132 @@
+<div class="row">
+  <a ng-if="user.is_admin" ui-sref="setup_tournament({id: tournament.tournament.id})" class="btn btn-primary">Setup teams&matches</a>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tournament info<span ng-if="user.is_admin"
+                                                     class="glyphicon glyphicon-edit pull-right"
+                                                     ng-click="tournament.editTournamentModalWindow(tournament.tournament)"></span>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <p>Name: {{tournament.tournament.name}}</p>
+        <p>Status: {{tournament.tournament.tourn_type}}</p>
+        <p>Place: {{tournament.tournament.place}}</p>
+        <p>Datetime: {{tournament.tournament.datetime | date:'MMM d, y H:mm'}}</p>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tournament teams</h3>
+      </div>
+      <div class="panel-body">
+        <p ng-repeat="team in tournament.teams">{{team.name}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Results table</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table">
+          <tr>
+            <th>Place</th>
+            <th>Team</th>
+            <th>Played games</th>
+            <th>Wins</th>
+            <th>Loses</th>
+            <th>S - M goals</th>
+            <th>Goals difference</th>
+            <th>Points</th>
+          </tr>
+          <tr ng-repeat="result in tournament.results">
+            <td>{{result.place}}</td>
+            <td>{{result.team.name}}</td>
+            <td class="text-center">{{result.played_games}}</td>
+            <td class="text-center">{{result.wins}}</td>
+            <td class="text-center">{{result.loses}}</td>
+            <td class="text-center">{{result.scored_goals}} - {{result.missed_goals}}</td>
+            <td class="text-center">{{result.goals_difference}}</td>
+            <td class="text-center">{{result.points}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Play-off bracket</h3>
+      </div>
+      <div class="panel-body" id="playoff-table">
+        <div id="playoff-bracket" class="bracket"></div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Tournament matches</h3>
+      </div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+              <input type="text" class="form-control" placeholder="Search match" ng-model="searchMatch">
+            </div>
+          </div>
+        </form>
+        <table class="table">
+          <tr>
+            <th >Teams</th>
+            <th>Type</th>
+            <th>Datetime</th>
+            <th>Status</th>
+            <th>Tour</th>
+            <th>Winner</th>
+            <th></th>
+          </tr>
+          <tr ng-repeat-start="match in tournament.matches | orderBy:sortType:sortReverse | filter:searchMatch" class="main"
+               slide-table>
+            <!--ng-show="match.match_teams[0].name && match.match_teams[1].name"-->
+            <td class="col-md-3">{{match.match_teams[0].name}} VS {{match.match_teams[1].name}}</td>
+            <td class="col-md-1">{{match.match.match_type}}</td>
+            <td class="col-md-2">{{match.match.datetime | date:'MMM d, y H:mm'}}</td>
+            <td class="col-md-1">{{match.match.status}}</td>
+            <td class="col-md-1">{{match.match.tour }}<span ng-if="!match.match.tour" class='glyphicon glyphicon-minus'></span></td>
+            <td class="col-md-2">{{tournament.findWinnerTeam(match.match.winner_team_id)}}</td>
+            <td class="col-md-1"><span class="glyphicon glyphicon-info-sign pull-right"></span></td>
+          </tr>
+          <tr ng-repeat-end>
+            <td colspan="7" class="detailed">
+              <div class="match-info">
+                <table class="table">
+                  <tr>
+                    <th>Round number</th>
+                    <th>Scored goals</th>
+                    <th>Missed goals</th>
+                    <th colspan="2">Status</th>
+                  </tr>
+                  <tr ng-repeat="round in match.match_rounds">
+                    <td>{{$index + 1}}</td>
+                    <td>{{round[0].scored_goals}} - {{round[1].scored_goals}}</td>
+                    <td>{{round[0].missing_goals}} - {{round[1].missing_goals}}</td>
+                    <td>{{round[0].status}}</td>
+                    <td ng-if="user.is_admin"><span class="glyphicon glyphicon-edit"
+                                                    ng-click="tournament.editRoundModalWindow(round,match.match.tournament_id)"></span></td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

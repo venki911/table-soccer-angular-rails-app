@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+  <head>
+    <base href="/">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="vendor/xdan-datetimepicker/jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="vendor/jquery-bracket/jquery.bracket.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="tableSoccerClientAngularApp" ng-cloak="">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="header" >
+      <div class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" ui-sref="home">Table-Soccer Tournaments</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+              <li><a ui-sref="home">Home</a></li>
+              <li><a ui-sref="tournaments">Tournaments</a></li>
+              <!--ng-href="#/tournaments"-->
+              <li><a ng-href="#/">Teams</a></li>
+
+              <li ng-if="!user.id"><a ui-sref="sign_in">Sign in</a></li>
+              <li ng-if="!user.id"><a ui-sref="sign_up">Sign up</a></li>
+
+
+              <li ng-if="user.id" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button"
+                   aria-haspopup="true" aria-expanded="false">{{user.first_name}}<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a ui-sref="user_profile">Profile</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a ng-href="#/" ng-if="user.id" ng-click="signOut()">Sign out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div ui-view></div>
+    </div>
+
+    <div class="footer">
+
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-cookie/angular-cookie.js"></script>
+    <script src="bower_components/ng-token-auth/dist/ng-token-auth.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/auth/session.js"></script>
+    <script src="scripts/controllers/auth/register.js"></script>
+
+    <!-- Tournaments -->
+    <script src="scripts/services/tournamentservice.js"></script>
+    <script src="scripts/controllers/tournament/tournaments.js"></script>
+    <script src="scripts/controllers/tournament/tournamentDetails.js"></script>
+    <script src="scripts/controllers/tournament/tournamentNew.js"></script>
+    <script src="scripts/controllers/tournament/tournamentEdit.js"></script>
+    <script src="scripts/controllers/tournament/tournamentRoundEdit.js"></script>
+
+    <!-- Vendor -->
+    <script src="vendor/xdan-datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="vendor/jquery-bracket/jquery.bracket.min.js"></script>
+
+    <!-- Users -->
+    <script src="scripts/services/userservice.js"></script>
+    <script src="scripts/controllers/users/profile.js"></script>
+    <script src="scripts/controllers/users/changeAvatar.js"></script>
+    <script src="scripts/controllers/users/changePassword.js"></script>
+
+    <!-- Teams -->
+    <script src="scripts/services/setupTournamentService.js"></script>
+    <script src="scripts/controllers/tournament/tournamentSetup.js"></script>
+    <!-- Directives -->
+    <script src="scripts/directives/datetimepicker.js"></script>
+    <script src="scripts/directives/slidetable.js"></script>
+
+    <!-- endbuild -->
+</body>
+</html>

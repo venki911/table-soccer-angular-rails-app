@@ -1,0 +1,12 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body">
+  <form name="form">
+    <div ng-include="templateUrl"></div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="form.$invalid">{{action}}</button>
+  <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+</div>

@@ -1,0 +1,59 @@
+<div class="form-group" ng-class="{ 'has-error' : form.tournamentName.$invalid }">
+  <label for="tournamentName">Name</label>
+  <input type="text"
+         class="form-control"
+         id="tournamentName"
+         name="tournamentName"
+         placeholder="name"
+         ng-model="tournament.name"
+         ng-value="tournament.name"
+         ng-minlength="10"
+         ng-maxlength="50"
+         required>
+  <span class="help-block" ng-show="form.tournamentName.$invalid">Required and must be 10-50 characters</span>
+</div>
+<div class="form-group">
+  <label for="tournamentType">Status</label>
+  <!--<input type="text"-->
+  <!--class="form-control"-->
+  <!--id="tournamentType"-->
+  <!--name="tournamentType"-->
+  <!--placeholder="status"-->
+  <!--ng-model="tournament.type"-->
+  <!--ng-value="tournament.type"-->
+  <!--required>-->
+  <select name="tournamentType"
+          id="tournamentType"
+          class="form-control"
+          ng-model="tournament.tourn_type"
+  >
+    <option value="current">current</option>
+    <option value="finished">finished</option>
+    <option value="not started">not started</option>
+
+  </select>
+</div>
+<div class="form-group" ng-class="{ 'has-error' : form.tournamentPlace.$invalid }">
+  <label for="tournamentPlace">Place</label>
+  <input type="text"
+         class="form-control"
+         id="tournamentPlace"
+         name="tournamentPlace"
+         placeholder="place"
+         ng-model="tournament.place"
+         ng-value="tournament.place"
+         required>
+  <span class="help-block" ng-show="form.tournamentPlace.$invalid">Required</span>
+</div>
+<div class="form-group" ng-class="{ 'has-error' : form.tournamentDatetime.$invalid }">
+  <label for="tournamentDatetime">Datetime</label>
+  <input type="text"
+         class="form-control"
+         id="tournamentDatetime"
+         name="tournamentDatetime"
+         placeholder="datetime"
+         ng-model="tournament.datetime"
+         ng-value="tournament.datetime" date-time-picker=""
+         required>
+  <span class="help-block" ng-show="form.tournamentDatetime.$invalid">Required</span>
+</div>

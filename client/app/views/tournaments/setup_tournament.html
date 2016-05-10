@@ -1,0 +1,103 @@
+<section id="setup">
+  <div class="row">
+    <h1 class="text-center">Teams&Matches setup</h1>
+    <div class="col-md-5">
+      <h2 class="text-center">1. Select players</h2>
+      <h3 class="text-center">Selected: <span ng-class="{'text-danger': setup.selectedUsers.length %2 !== 0}">{{setup.selectedUsers.length}}</span></h3>
+      <div id="selectUsers" class="list-group center-block">
+        <div class="list-group-item" ng-repeat=" user in users"
+             ng-init = "user.selected = false"
+             ng-click="user.selected = !user.selected; setup.selectOrRemoveUser(user); setup.teamsCount()"
+             ng-class="{'bg-success': user.selected}">
+          <img ng-src="{{defaultHost}}{{user.avatar.url}}" class="img-circle" alt="" height="100" width="100">
+          <span class="noselect">{{user.first_name}} {{user.last_name}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <h2 class="text-center">2. Select teams generate mode</h2>
+      <div class="row">
+        <div class="col-xs-offset-4 col-sm-offset-5">
+          <div class="btn-group" data-toggle="buttons" ng-init="manually = false">
+            <label class="btn btn-primary active" ng-click="manually = false">
+              <input type="radio" checked>Automatically
+            </label>
+            <label class="btn btn-primary" ng-click="manually = true">
+              <input type="radio">Manually
+            </label>
+          </div>
+        </div>
+      </div>
+      <h2 class="text-center text-info" ng-if="!manually">Teams will be generated automatically.</h2>
+      <div class="manually-setup" ng-if="manually">
+        <h2 class="text-center text-info" ng-if="setup.selectedUsers.length < 1">Please select players</h2>
+        <h2 class="text-center text-danger"
+            ng-if="setup.selectedUsers.length %2 !== 0 &&
+            setup.selectedUsers.length > 0 ||
+            setup.selectedUsers.length < 3">Players count must be even and > 4!</h2>
+
+        <div class="teams noselect" ng-if="setup.selectedUsers.length > 3">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="selected-users panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Selected users</h3>
+                </div>
+                <div class="panel-body">
+                  <ul class="sortable" ui-sortable="{connectWith: '.sortable'}">
+                    <li ng-repeat="user in setup.selectedUsers" id="{{user.id}}">{{user.first_name}} {{user.last_name}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="team panel panel-primary" ng-repeat="team in setup.teamscount track by $index">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Team {{$index + 1}}</h3>
+                </div>
+                <div class="panel-body">
+                  <ul id="team-{{$index + 1}}" ui-sortable="{connectWith: '.sortable'}" class="sortable"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="text-center">3. Set match system</h2>
+      <div class="list-group center-block">
+        <div class="list-group-item text-center" ng-repeat=" system in setup.systems"
+             ng-init = "system.selected = false"
+             ng-click="setup.selectSystem(system)"
+             ng-class="{'bg-success': system.selected}">
+          {{system.name}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h2 class="text-center">4. Play-off begins with</h2>
+      <div class="list-group center-block">
+        <div class="list-group-item text-center" ng-repeat=" tour in setup.tours"
+             ng-init = "tour.selected = false"
+             ng-click="setup.selectStartTour(tour)"
+             ng-class="{'bg-success': tour.selected}">
+          {{tour.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-success btn-lg center-block"
+          ng-disabled="setup.selectedUsers.length %2 !== 0 ||
+                       setup.selectedUsers.length === 0 ||
+                       setup.count === 0 ||
+                       setup.tour === 0"
+          ng-click="setup.generateSetup(manually)">Generate teams&matches</button>
+  <br>
+</section>
+

@@ -1,0 +1,238 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+
+  /* Make the masthead heading the same height as the navigation */
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+  }
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+
+  .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+  }
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+
+  p + h4 {
+    margin-top: 28px;
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  //.container {
+  //  max-width: 730px;
+  //}
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+span {
+  &.glyphicon:hover {
+    cursor: pointer;
+  }
+  &.glyphicon-minus:hover {
+    cursor: default;
+  }
+  &.glyphicon-info-sign {
+    font-size: 1.3em;
+  }
+}
+
+
+.deleted-row {
+  text-align: center;
+
+  span {
+    color: #337ab7;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.cropArea {
+  background: #E4E4E4;
+  overflow: hidden;
+  height:300px;
+}
+form .progress {
+  line-height: 15px;
+}
+.progress {
+  display: inline-block;
+  width: 100px;
+  border: 3px groove #CCC;
+}
+.progress div {
+  font-size: smaller;
+  background: orange;
+  width: 0;
+}
+.drop-box {
+  background: #F8F8F8;
+  border: 5px dashed #DDD;
+  text-align: center;
+  padding: 6em;
+  margin: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .drop-text {
+    font-size: 40px;
+    vertical-align: middle;
+  }
+
+}
+
+#setup{
+  .bg-success {
+    background-color: #dff0d8 !important;
+  }
+
+  .list-group-item:hover {
+    cursor: pointer;
+  }
+  #selectUsers {
+    overflow: auto;
+    height: 500px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    span {
+      font-size: 2em;
+    }
+  }
+}
+.teams {
+  overflow: auto;
+  height: 500px;
+
+
+  ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    min-height: 102px;
+    color: #fff;
+
+    li {
+      cursor: pointer;
+      background: #337ab7;
+      border-radius: 4px;
+      padding: 5px;
+      margin-bottom: 5px;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .selected-users {
+    width: 100%;
+    float: left;
+    margin: 12px 5px 0;
+  }
+
+  .team {
+    width: 47%;
+    float: left;
+    margin: 12px 5px 0;
+
+    ul {
+      //min-height: 102px;
+
+    }
+  }
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.match-info {
+  display: none;
+}
+.detailed {
+  border: none !important;
+  padding: 0 !important;
+}
+
