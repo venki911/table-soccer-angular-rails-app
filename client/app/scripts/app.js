@@ -81,7 +81,7 @@ angular
         controllerAs: 'setup'
       });
     $urlRouterProvider.otherwise('/');
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
   })
   .run(['$rootScope', '$location', 'defaultHost', '$auth', function ($rootScope, $location, defaultHost, $auth) {
     $rootScope.defaultHost = 'http://localhost:3000';
