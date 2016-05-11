@@ -22,6 +22,7 @@ gem 'carrierwave'
 
 
 gem 'faker'
+gem 'mailgun_rails'
 
 group :production do
   gem 'pg'
