@@ -11,23 +11,27 @@
   angular
     .module('tableSoccerClientAngularApp')
     .controller('ProfileCtrl', [
-      'tournamentService',
+      '$rootScope',
+      '$auth',
+      'UserService',
       '$uibModal',
       ProfileCtrl
     ]);
 
-  function ProfileCtrl(tournamentService, $uibModal) {
+  function ProfileCtrl($rootScope, $auth, UserService, $uibModal) {
     var vm = this;
-
     function getAll() {
-      tournamentService.all()
-        .success(function (tournaments) {
-          vm.tournaments = tournaments;
-        })
-        .error(function (message) {
-          vm.errors = message;
-          console.log(message)
-        });
+      $auth.validateUser().then(function () {
+        UserService.profileInfo($rootScope.user.id)
+          .success(function (info) {
+            vm.tournaments = info.profile.tournaments;
+            vm.teams = info.profile.teams;
+          })
+          .error(function (message) {
+            vm.errors = message;
+            console.log(message)
+          });
+      });
     }
     getAll();
 
@@ -35,7 +39,7 @@
       $uibModal
         .open({
           templateUrl: 'views/modal.html',
-          controller: 'ChangeAvatarCtrl',
+          controller: 'ChangeAvatarCtrl'
         })
     };
 

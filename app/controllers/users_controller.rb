@@ -6,6 +6,17 @@ class UsersController < ApplicationController
   #   respond_with User.find_by_id!(params[:id])
   # end
 
+  def show
+    user_teams = User.find_by_id!(params[:id]).teams.order(:id)
+
+    respond_with profile:{
+      teams: user_teams,
+      tournaments: user_teams.collect { |team| team.tournament }.uniq
+    }
+
+
+  end
+
   def update_avatar
     @user = User.find_by_id!(params[:id])
     if @user

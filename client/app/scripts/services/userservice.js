@@ -20,7 +20,8 @@
     var service = {
 
       getUsersByTeam : getUsersByTeam,
-      setUsersResults: setUsersResults
+      setUsersResults: setUsersResults,
+      profileInfo: profileInfo
     };
 
     return service;
@@ -34,6 +35,10 @@
       return $http.post(defaultHost.url + '/user_results.json', {
         users_results: arr
       })
+    }
+
+    function profileInfo(id) {
+      return $http.get(defaultHost.url + '/users/' + id + '.json')
     }
   }
 })();
