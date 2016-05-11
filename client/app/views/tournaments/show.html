@@ -92,8 +92,7 @@
             <th></th>
           </tr>
           <tr ng-repeat-start="match in tournament.matches | orderBy:sortType:sortReverse | filter:searchMatch" class="main"
-               slide-table>
-            <!--ng-show="match.match_teams[0].name && match.match_teams[1].name"-->
+              ng-show="match.match_teams[0].name && match.match_teams[1].name" slide-table>
             <td class="col-md-3">{{match.match_teams[0].name}} VS {{match.match_teams[1].name}}</td>
             <td class="col-md-1">{{match.match.match_type}}</td>
             <td class="col-md-2">{{match.match.datetime | date:'MMM d, y H:mm'}}</td>
