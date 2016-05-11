@@ -21,7 +21,8 @@ angular
     'ui.bootstrap',
     'ngFileUpload',
     'ngImgCrop',
-    'ui.sortable'
+    'ui.sortable',
+    'angular-loading-bar'
   ])
   .constant('defaultHost', {
     url: '/api'//'http://localhost:3000'
