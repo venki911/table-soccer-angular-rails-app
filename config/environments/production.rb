@@ -77,9 +77,16 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-      api_key: ENV['MAILGUN_API_KEY'],
-      domain: ENV['MAILGUN_DOMAIN']
+
+  ActionMailer::Base.smtp_settings = {
+      :port           => ENV['MAILGUN_PORT'],
+      :address        => ENV['MAILGUN_ADDRESS'],
+      :user_name      => ENV['MAILGUN_NAME'],
+      :password       => ENV['MAILGUN_PSWD'],
+      :domain         => ENV['MAILGUN_DOMAIN'],
+      :authentication => :plain,
   }
+  ActionMailer::Base.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = { :host => 'table-soccer-tournaments.herokuapp.com' }
 end
