@@ -24,6 +24,12 @@ gem 'carrierwave'
 gem 'faker'
 gem 'mailgun_rails'
 
+
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
+gem 'redis-rack-cache'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
