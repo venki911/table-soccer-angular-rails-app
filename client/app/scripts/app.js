@@ -29,8 +29,8 @@ angular
   .config(function ($authProvider, $stateProvider, $urlRouterProvider, $locationProvider, defaultHost) {
     $authProvider.configure({
       apiUrl: defaultHost.url,
-      confirmationSuccessUrl: 'https://table-soccer-tournaments.herokuapp.com/#/sign_in',
-      passwordResetSuccessUrl: 'https://table-soccer-tournaments.herokuapp.com/#/reset_password',
+      confirmationSuccessUrl: 'https://table-soccer-tournaments.herokuapp.com/sign_in',
+      passwordResetSuccessUrl: 'https://table-soccer-tournaments.herokuapp.com/reset_password',
       authProviderPaths: {
         facebook: '/auth/facebook'
       }
