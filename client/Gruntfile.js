@@ -110,29 +110,11 @@ module.exports = function (grunt) {
               ),
               connect.static(appConfig.app)
             ];
-            // // Serve static files.
-            // options.base.forEach(function(base) {
-            //   middlewares.push(connect.static(base));
-            // });
             // Make directory browse-able.
             var directory = options.directory || options.base[options.base.length - 1];
             middlewares.push(connect.directory(directory));
 
             return middlewares;
-            // return [
-            //   require('grunt-connect-proxy/lib/utils').proxyRequest,
-            //   modRewrite(['^[^\\.]*$ /index.html [L]']),
-            //   connect.static('.tmp'),
-            //   connect().use(
-            //     '/bower_components',
-            //     connect.static('./bower_components')
-            //   ),
-            //   connect().use(
-            //     '/app/styles',
-            //     connect.static('./app/styles')
-            //   ),
-            //   connect.static(appConfig.app)
-            // ];
           }
         }
       },
@@ -353,7 +335,7 @@ module.exports = function (grunt) {
     // cssmin: {
     //   dist: {
     //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
+    //       '<%= yeoman.dist %>/{,*/}/*.css': [
     //         '.tmp/styles/{,*/}*.css'
     //       ]
     //     }

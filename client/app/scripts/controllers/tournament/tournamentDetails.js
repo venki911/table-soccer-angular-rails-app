@@ -91,24 +91,29 @@
               results = [],
               teams = [];
 
-            teams = playoffBrakcet[0].teams;
-            results = playoffBrakcet[0].goals;
+            // teams = playoffBrakcet[0].teams;
+            // results = playoffBrakcet[0].goals;
+            $('section').fadeIn('slow');
+            if (playoffBrakcet) {
+              var minimalData = {
+                teams : playoffBrakcet[0].teams,
+                results : playoffBrakcet[0].goals
+              };
 
-            var minimalData = {
-              teams : teams,
-              results : results
-            };
+              $('#playoff-bracket').bracket({
+                init: minimalData
+              });
+            }
 
-            $('#playoff-bracket').bracket({
-              init: minimalData
-            });
+
           })
         .error(function (message) {
           vm.errors = message;
-          console.error(vm.errors)
+          console.error(vm.errors);
+
         })
     }
     getAll();
-
+    // $('section').fadeIn('slow');
     }
 })();

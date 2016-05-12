@@ -22,7 +22,8 @@ angular
     'ngFileUpload',
     'ngImgCrop',
     'ui.sortable',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'angularUtils.directives.dirPagination'
   ])
   .constant('defaultHost', {
     url: '/api'//'http://localhost:3000'

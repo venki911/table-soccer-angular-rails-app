@@ -23,16 +23,17 @@
       tournamentService.all()
         .success(function (tournaments) {
           vm.tournaments = tournaments;
+          $('section').fadeIn('slow')
         })
         .error(function (message) {
           vm.errors = message;
-          console.log(message)
+          console.log(message);
         });
     }
     getAll();
 
     vm.openNewModalWindow = function () {
- 
+
       $uibModal
         .open({
         templateUrl: 'views/modal.html',
@@ -74,7 +75,6 @@
           console.error(msg)
         });
       vm.deletedItems = [];
-    }
-
+    };
   }
 })();

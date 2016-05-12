@@ -68,7 +68,8 @@
     SetupTournamentService
       .getUsers($state.params.id)
       .success(function (users) {
-        angular.copy(users, $scope.users)
+        angular.copy(users, $scope.users);
+        $('section').fadeIn('slow')
       });
 
     vm.selectOrRemoveUser = function (user) {
