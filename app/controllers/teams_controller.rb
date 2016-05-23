@@ -13,23 +13,7 @@ class TeamsController < ApplicationController
   end
 
   def new
-    # p params
-    # tournament = Tournament.find_by_id!(params[:t_id])
-    #
-    # if tournament.teams.any?
-    #   users_playing = []
-    #
-    #   tournament.teams.each do |team|
-    #     team.users.each do |user|
-    #       users_playing << user.id
-    #     end
-    #   end
-    #
-    #   response = User.select(USER_COLUMNS).where.not(id: users_playing).order(:first_name,:last_name)
-    # else
-      response = User.select(USER_COLUMNS).order(:first_name,:last_name)
-    # end
-
+    response = User.select(USER_COLUMNS).order(:first_name,:last_name)
     respond_with response
   end
 

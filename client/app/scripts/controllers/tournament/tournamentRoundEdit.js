@@ -23,8 +23,8 @@
   function TournamentRoundEditCtrl($scope, tournamentService, UserService, $uibModalInstance, round) {
     var vm = this;
     $scope.templateUrl = "views/tournaments/edit_tournament_round.html";
-    $scope.title = "Edit tournament match round № " + round.rounds[0].round_number;
-    $scope.action = 'Update';
+    $scope.title = "Редактирование раунда № " + round.rounds[0].round_number;
+    $scope.action = 'Обновить';
 
     function setUsers(obj) {
       UserService.getUsersByTeam(obj.team_id).success(function (users) {

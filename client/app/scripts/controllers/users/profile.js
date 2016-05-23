@@ -26,6 +26,7 @@
           .success(function (info) {
             vm.tournaments = info.profile.tournaments;
             vm.teams = info.profile.teams;
+            $('section').fadeIn('slow')
           })
           .error(function (message) {
             vm.errors = message;

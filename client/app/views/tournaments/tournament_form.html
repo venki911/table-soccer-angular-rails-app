@@ -1,19 +1,18 @@
 <div class="form-group" ng-class="{ 'has-error' : form.tournamentName.$invalid }">
-  <label for="tournamentName">Name</label>
+  <label for="tournamentName">Название</label>
   <input type="text"
          class="form-control"
          id="tournamentName"
          name="tournamentName"
-         placeholder="name"
          ng-model="tournament.name"
          ng-value="tournament.name"
          ng-minlength="10"
          ng-maxlength="50"
          required>
-  <span class="help-block" ng-show="form.tournamentName.$invalid">Required and must be 10-50 characters</span>
+  <span class="help-block" ng-show="form.tournamentName.$invalid">Обязательное поле, должно содержать 10-50 символов</span>
 </div>
 <div class="form-group">
-  <label for="tournamentType">Status</label>
+  <label for="tournamentType">Статус</label>
   <!--<input type="text"-->
   <!--class="form-control"-->
   <!--id="tournamentType"-->
@@ -27,31 +26,29 @@
           class="form-control"
           ng-model="tournament.tourn_type"
   >
-    <option value="current">current</option>
-    <option value="finished">finished</option>
-    <option value="not started">not started</option>
+    <option value="current">текущий</option>
+    <option value="finished">закончен</option>
+    <option value="not started">не начат</option>
 
   </select>
 </div>
 <div class="form-group" ng-class="{ 'has-error' : form.tournamentPlace.$invalid }">
-  <label for="tournamentPlace">Place</label>
+  <label for="tournamentPlace">Место</label>
   <input type="text"
          class="form-control"
          id="tournamentPlace"
          name="tournamentPlace"
-         placeholder="place"
          ng-model="tournament.place"
          ng-value="tournament.place"
          required>
   <span class="help-block" ng-show="form.tournamentPlace.$invalid">Required</span>
 </div>
 <div class="form-group" ng-class="{ 'has-error' : form.tournamentDatetime.$invalid }">
-  <label for="tournamentDatetime">Datetime</label>
+  <label for="tournamentDatetime">Дата/Время</label>
   <input type="text"
          class="form-control"
          id="tournamentDatetime"
          name="tournamentDatetime"
-         placeholder="datetime"
          ng-model="tournament.datetime"
          ng-value="tournament.datetime" date-time-picker=""
          required>

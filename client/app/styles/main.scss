@@ -237,8 +237,17 @@ form .progress {
 }
 
 section {
+  //background: #FAFAFA;
+  padding-top: 20px;
+  //margin-top: 20px;
   display: none;
 }
 .matches-table {
   height: 455px;
+}
+
+.main-block {
+  height: 600px;
+  background: url(../vendor/template/assets/pexels-photo-1.jpg) no-repeat center center;
+  background-size: cover;
 }

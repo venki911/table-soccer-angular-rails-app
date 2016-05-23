@@ -1,11 +1,4 @@
 class UsersController < ApplicationController
-
-  # COLUMNS = [:id, :email, :first_name, :last_name, ]
-  #
-  # def show
-  #   respond_with User.find_by_id!(params[:id])
-  # end
-
   def show
     user_teams = User.find_by_id!(params[:id]).teams.order(:id)
 
@@ -13,8 +6,6 @@ class UsersController < ApplicationController
       teams: user_teams,
       tournaments: user_teams.collect { |team| team.tournament }.uniq
     }
-
-
   end
 
   def update_avatar

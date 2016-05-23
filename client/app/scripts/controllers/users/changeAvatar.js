@@ -23,8 +23,8 @@
   function ChangeAvatarCtrl($rootScope, $scope, $uibModalInstance, Upload, $timeout) {
     var vm = this;
     $scope.templateUrl = "views/users/avatar_modal.html";
-    $scope.title = "Change avatar";
-    $scope.action = 'Update';
+    $scope.title = "Изменение аватара";
+    $scope.action = 'Обновить';
 
 
     $scope.submit = function (dataUrl, name) {

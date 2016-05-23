@@ -23,8 +23,8 @@
   function TournamentsEditCtrl($scope, $filter, tournamentService, $uibModalInstance, tournament) {
     var vm = this;
     $scope.templateUrl = "views/tournaments/tournament_form.html";
-    $scope.title = "Edit tournament";
-    $scope.action = 'Update';
+    $scope.title = "Редактирование турнира";
+    $scope.action = 'Обновить';
 
     $scope.tournament ={
       id: tournament.id,
@@ -34,11 +34,11 @@
       datetime: tournament.datetime
     };
 
-    $scope.$watch('tournament.datetime', function (newValue) {
-      if (newValue) {
-        $scope.tournament.datetime = $filter('date')(newValue, 'MMM d, y H:mm');
-      }
-    });
+    // $scope.$watch('tournament.datetime', function (newValue) {
+    //   if (newValue) {
+    //     $scope.tournament.datetime = $filter('date')(newValue, 'd MMM y H:mm');
+    //   }
+    // });
 
     $scope.ok = function () {
       var formattedDate = $scope.tournament.datetime;

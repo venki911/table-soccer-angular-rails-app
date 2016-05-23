@@ -1,70 +1,72 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div class="user-avatar">
-        <img ng-src="{{defaultHost}}{{user.avatar.url}}" class="center-block">
-        <br>
-        <button class="btn btn-primary center-block" ng-click="profile.changeAvatarModal()">Change avatar</button>
-        <br>
-        <div id="upload-form">
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="user-avatar">
+          <img ng-src="{{defaultHost}}{{user.avatar.url}}" class="center-block">
+          <br>
+          <button class="btn btn-primary center-block btn-block btn-flat" ng-click="profile.changeAvatarModal()">Изменить аватар</button>
+          <br>
+          <div id="upload-form">
 
+          </div>
+
+
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Информация о профиле</h3>
+          </div>
+          <div class="panel-body">
+            <p><span class="profile-field">Имя: </span>{{user.first_name}}</p>
+            <p><span class="profile-field">Фамилия: </span>{{user.last_name}}</p>
+            <p><span class="profile-field">Эл. адрес: </span>{{user.email}}</p>
+            <button ng-if="user.provider !== 'facebook'" ng-click="profile.changePasswordModal()" class="btn btn-danger btn-block btn-flat">Изменить пароль</button>
+          </div>
         </div>
 
 
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Мои команды</h3>
+          </div>
+          <div class="panel-body">
+            <table class="table">
+              <tr>
+                <th>Название</th>
+              </tr>
+              <tr ng-repeat=" team in profile.teams">
+                <td>{{team.name}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Profile information</h3>
-        </div>
-        <div class="panel-body">
-          <p><span class="profile-field">First name: </span>{{user.first_name}}</p>
-          <p><span class="profile-field">Last name: </span>{{user.last_name}}</p>
-          <p><span class="profile-field">E-mail: </span>{{user.email}}</p>
-          <button ng-if="user.provider !== 'facebook'" ng-click="profile.changePasswordModal()" class="btn btn-danger">Change password</button>
+
+      <div class="col-md-8">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Мои турниры</h3>
+          </div>
+          <div class="panel-body">
+            <table class="table">
+              <tr>
+                <th>Название</th>
+                <th>Тип</th>
+                <th>Место</th>
+                <th>Дата/Время</th>
+              </tr>
+              <tr ng-repeat=" tournament in profile.tournaments">
+                <td><a ui-sref="tournaments_show({id: tournament.id})">{{tournament.name}}</a></td>
+                <td>{{tournament.tourn_type}}</td>
+                <td>{{tournament.place}}</td>
+                <td>{{tournament.datetime | date: 'MMM d, y H:mm'}}</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
 
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">My teams</h3>
-        </div>
-        <div class="panel-body">
-          <table class="table">
-            <tr>
-              <th>Name</th>
-            </tr>
-            <tr ng-repeat=" team in profile.teams">
-              <td>{{team.name}}</td>
-            </tr>
-          </table>
-        </div>
-      </div>
     </div>
-
-    <div class="col-md-8">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">My tournaments</h3>
-        </div>
-        <div class="panel-body">
-          <table class="table">
-            <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Place</th>
-              <th>Date</th>
-            </tr>
-            <tr ng-repeat=" tournament in profile.tournaments">
-              <td><a ui-sref="tournaments_show({id: tournament.id})">{{tournament.name}}</a></td>
-              <td>{{tournament.tourn_type}}</td>
-              <td>{{tournament.place}}</td>
-              <td>{{tournament.datetime | date: 'MMM d, y H:mm'}}</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-
   </div>
-</div>
+</section>

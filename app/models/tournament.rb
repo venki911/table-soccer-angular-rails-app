@@ -24,11 +24,8 @@ class Tournament < ActiveRecord::Base
   validate :datetime_validate
 
   def create_matches(times,match_params)
-    # times = times.to_i
-
     default_round_status = Match.statuses['not started']
-    tour_id = match_params[:tour]#Match.tours[match_params[:tour]]
-    # match_type = match_params[:match_type]#Match.match_types[match_params[:match_type]]
+    tour_id = match_params[:tour]
 
     1.upto(2) do |match_type|
       if match_type == 1
@@ -93,65 +90,6 @@ class Tournament < ActiveRecord::Base
         end
       end
     end
-
-    # if match_type == 1
-    #
-    #   teams = self.teams.to_a.reverse
-    #   round_datetime = self.datetime
-    #   (0..teams.length-1).each do
-    #     team = teams.pop
-    #     new_teams_length = teams.length-1
-    #
-    #     new_teams_length.downto(0) do |j|
-    #       Match.new(match_params)
-    #           .create_teams_matches(times,round_datetime,default_round_status,team,teams,j)
-    #       round_datetime += 300 * times + 300
-    #     end
-    #   end
-    # elsif match_type == 2
-    #
-    #   if tour_id != 0
-    #     teams = []
-    #     if self.matches.where.not(tour: nil).any?
-    #       last_tour = Match.tours[self.matches.where(match_type: match_type).last.tour]
-    #       if last_tour != 4
-    #         self.matches.where(tour: last_tour).each do |match|
-    #           teams << Team.find_by_id(match.winner_team_id)
-    #         end
-    #       else
-    #         self.matches.where(tour: 3).each do |match|
-    #           match.teams.uniq.each do |team|
-    #             teams << team if team.id != match.winner_team_id
-    #           end
-    #
-    #         end
-    #       end
-    #
-    #       teams.flatten!
-    #     else
-    #       teams = self.results_table.collect { |team| team[:team] }
-    #     end
-    #
-    #     case (tour_id)
-    #       when 1 #1/8
-    #         teams = teams[0...16]
-    #       when 2 #1/4
-    #         teams = teams[0...8]
-    #       when 3 #1/2
-    #         teams = teams[0...4]
-    #       when 4 #final
-    #         teams = teams[0...2]
-    #       when 5 # 3rd place
-    #         teams = teams
-    #     end
-    #     round_datetime = Match.all.where(tournament_id: match_params[:tournament_id]).last.datetime + 300
-    #     (0..teams.length-2).step(2).each do |i|
-    #       Match.new(match_params)
-    #           .create_teams_matches(times,round_datetime,default_round_status,teams[i],teams,i+1)
-    #       round_datetime += 300 * times + 300
-    #     end
-    #   end
-    # end
   end
 
   def results_table
@@ -171,7 +109,7 @@ class Tournament < ActiveRecord::Base
         played_games = matches.length
         wins = Match.all.where(status: 2, match_type: 1, winner_team_id: tournament_team.id).count
         loses =  (played_games - wins)
-        #/round.teams_tournaments_rounds.maximum(:round_number)
+
         scored_goals += match.match_rounds.where(team_id: tournament_team.id).sum(:scored_goals)
         missed_goals += match.match_rounds.where(team_id: tournament_team.id).sum(:missing_goals)
       end
@@ -257,5 +195,4 @@ class Tournament < ActiveRecord::Base
     def datetime_validate
       errors.add(:datetime, "can't be less than current date/time") if datetime < Time.now - 1
     end
-
 end

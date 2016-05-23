@@ -22,8 +22,8 @@
   function TournamentsNewCtrl($scope, $filter, tournamentService, $uibModalInstance) {
     var vm = this;
     $scope.templateUrl = "views/tournaments/tournament_form.html";
-    $scope.title = "Create new tournament";
-    $scope.action = 'Create';
+    $scope.title = "Создание нового турнира";
+    $scope.action = 'Создать';
 
     $scope.tournament = {
       name: '',
@@ -32,11 +32,15 @@
       datetime: ''
     };
 
-    $scope.$watch('tournament.datetime', function (newValue) {
-      if (newValue) {
-        $scope.tournament.datetime = $filter('date')(new Date(newValue), 'MMM d, y H:mm'); //MMM d, y H:m
-      }
-    });
+    // $scope.$watch('tournament.datetime', function (newValue) {
+    //   if (newValue) {
+    //     // $scope.tournament.datetime = $filter('date')(newValue, 'd MMM y H:mm');
+    //     var temp = newValue;
+    //
+    //     console.log(temp);
+    //     $scope.tournament.datetime = $filter('date')(new Date(newValue), 'd MMM y H:mm'); //MMM d, y H:m
+    //   }
+    // });
 
     $scope.ok = function () {
       $scope.tournament.datetime = new Date($scope.tournament.datetime).toUTCString();

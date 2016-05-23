@@ -21,8 +21,8 @@
   function ChangePasswordCtrl($scope, $uibModalInstance, $auth) {
     var vm = this;
     $scope.templateUrl = "views/users/update_password.html";
-    $scope.title = "Change password";
-    $scope.action = 'Update';
+    $scope.title = "Изменить пароль";
+    $scope.action = 'Обновить';
 
     $scope.updatePasswordForm = {
       // current_password: '',

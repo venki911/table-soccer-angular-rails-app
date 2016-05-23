@@ -13,17 +13,17 @@
         // restrict: 'A',
         link: function postLink(scope, element, attrs) {
           $timeout(function () {
+            $.datetimepicker.setLocale('ru');
+
             $(element).datetimepicker({
               format: 'c', //Y-m-d H:i Y-m-d H:i O   F j, Y  H:i
               // formatDate: 'F j, Y',
               // formatTime: 'H:i',
-
               timepicker: true,
               validateOnBlur: false,
               step: 10,
               yearStart: 2016,
-              lang: 'en',
-
+              // lang: 'ru',
               onShow: function(ct) {
                 var date = Date.now();
                 this.setOptions({
@@ -40,7 +40,6 @@
                 // console.log(this.getValue());
               }
             });
-
           }, 0);
         }
       };

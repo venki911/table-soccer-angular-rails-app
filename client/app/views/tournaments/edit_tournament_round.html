@@ -3,13 +3,13 @@
   <div class="col-md-6" ng-repeat="round in round.rounds">
     <div class="form-group">
       <img ng-src="{{defaultHost}}{{round.users[0].avatar.url}}" class="img-circle" height="50" width="50">
-      <span><strong>{{round.users[0].first_name}} {{round.users[0].last_name}}</strong> scored goals</span>
+      <span><strong>{{round.users[0].first_name}} {{round.users[0].last_name}}</strong></span>
       <br><br>
       <input type="number" class="form-control" value="0" min="0" id="{{round.users[0].id}}">
     </div>
     <div class="form-group">
       <img ng-src="{{defaultHost}}{{round.users[1].avatar.url}}" class="img-circle" height="50" width="50">
-      <span><strong>{{round.users[1].first_name}} {{round.users[1].last_name}}</strong> scored goals</span>
+      <span><strong>{{round.users[1].first_name}} {{round.users[1].last_name}}</strong></span>
       <br><br>
       <input type="number" class="form-control" value="0" min="0" id="{{round.users[1].id}}">
     </div>
