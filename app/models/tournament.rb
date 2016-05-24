@@ -141,7 +141,7 @@ class Tournament < ActiveRecord::Base
       }
       start_tour = Match.tours[self.matches.where(match_type: 2).first.tour]
 
-      self.matches.where(tour: start_tour).each do |match|
+      self.matches.where(tour: start_tour).order(:id).each do |match|
         teams = []
         match.teams.uniq.each do |team|
           teams << team.name
@@ -154,7 +154,7 @@ class Tournament < ActiveRecord::Base
       goals_1_2 = []
       goals_final = []
       goals_3rd = []
-      self.matches.where(match_type: 2, status: 2).each do |match|
+      self.matches.where(match_type: 2, status: 2).order(:id).each do |match|
 
         case (Match.tours[match.tour])
           when 1 #1/8

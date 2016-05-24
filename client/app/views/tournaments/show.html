@@ -95,7 +95,7 @@
                   <th></th>
                 </tr>
                 <tr dir-paginate-start="match in tournament.matches | orderBy:sortType:sortReverse | filter:searchMatch | itemsPerPage:5" class="main"
-                    ng-show="match.match_teams[0].name && match.match_teams[1].name" slide-table>
+                    ng-show="match.match_teams[0].name || match.match_teams[1].name" slide-table>
                   <td class="col-md-3">{{match.match_teams[0].name}} VS {{match.match_teams[1].name}}</td>
                   <td class="col-md-1">{{match.match.match_type}}</td>
                   <td class="col-md-2">{{match.match.datetime | date:'d MMM y H:mm'}}</td>
@@ -112,7 +112,7 @@
                           <th>№ раунда</th>
                           <th>Забитые голы</th>
                           <th>Пропущенные голы</th>
-                          <th colspan="2">Status</th>
+                          <th colspan="2">Статус</th>
                         </tr>
                         <tr ng-repeat="round in match.match_rounds">
                           <td>{{$index + 1}}</td>

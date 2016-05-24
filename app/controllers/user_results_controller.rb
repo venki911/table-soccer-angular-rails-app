@@ -52,9 +52,9 @@ class UserResultsController < ApplicationController
         first_tour = tournament.matches.where(match_type: 2).first.tour
 
         teams = tournament.results_table.collect { |team| team[:team] }
-        tournament.matches.where(match_type: 2).each do |match|
+        tournament.matches.where(match_type: 2).order(:id).each do |match|
           playoff_teams = []
-          if !match.teams.present?
+          # if !match.teams.present?
             if match.tour == first_tour
               case (Match.tours[match.tour])
                 when 1 #1/8
@@ -71,20 +71,17 @@ class UserResultsController < ApplicationController
               end
               set_playoff_teams(playoff_teams,match)
             elsif match.tour != first_tour && match.tour != '3rd place'
-
-              tournament.matches.where(tour: Match.tours[match.tour] - 1).each do |prev_match|
+              tournament.matches.where(tour: Match.tours[match.tour] - 1).order(:id).each do |prev_match|
                 playoff_teams << Team.find_by_id(prev_match.winner_team_id) if prev_match.status == 'finished'
               end
-              # p playoff_teams
               set_playoff_teams(playoff_teams,match) #if playoff_teams.present?
             else
               tournament.matches.where(tour: 3).each do |prev_match|
                 playoff_teams << prev_match.teams.where.not(id: prev_match.winner_team_id).uniq[0] if prev_match.status == 'finished'
-                p playoff_teams
               end
               set_playoff_teams(playoff_teams,match) #if playoff_teams.present?
             end
-          end
+          # end
         end
       end
 
@@ -99,8 +96,8 @@ class UserResultsController < ApplicationController
       rounds = match.match_rounds.group_by(&:round_number)
       (0..teams.length).step(2).each do |i|
         1.upto(rounds.length) do |number|
-          rounds[number][0].update_attributes(team: teams[i]) if rounds[number][0].team_id.nil?
-          rounds[number][1].update_attributes(team: teams[i+1]) if rounds[number][1].team_id.nil?
+          rounds[number][0].update_attributes(team: teams[i]) if teams[i]
+          rounds[number][1].update_attributes(team: teams[i+1]) if teams[i+1]
         end
       end
     end
