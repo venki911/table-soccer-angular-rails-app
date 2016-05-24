@@ -16,9 +16,9 @@ class TeamsController < ApplicationController
     render json: obj
   end
 
-  def show
-    respond_with Team.select(COLUMNS).find_by_id!(params[:id])
-  end
+  # def show
+  #   # respond_with Team.select(COLUMNS).find_by_id!(params[:id])
+  # end
 
   def new
     response = User.select(USER_COLUMNS).order(:first_name,:last_name)

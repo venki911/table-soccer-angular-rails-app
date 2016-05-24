@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :user_results, only: :create
     resources :tournaments, only: default_actions
     post '/tournaments_destroy' => 'tournaments#destroy'
-    resources :teams, only: default_actions
+    resources :teams
     resources :matches, only: [:create]
   end
 end
