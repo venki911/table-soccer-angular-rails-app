@@ -3,7 +3,7 @@
   <head>
     <base href="/">
     <meta charset="utf-8">
-    <title></title>
+    <title>Table-Soccer Tournaments</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -46,7 +46,7 @@
             <li><a ui-sref="home">Главная</a></li>
             <li><a ui-sref="tournaments">Турниры</a></li>
             <!--ng-href="#/tournaments"-->
-            <li><a ng-href="#/">Команды</a></li>
+            <li><a ui-sref="teams">Команды</a></li>
 
             <li ng-if="!user.id"><a ui-sref="sign_in">Авторизация</a></li>
             <li ng-if="!user.id"><a ui-sref="sign_up">Регистрация</a></li>
@@ -140,7 +140,9 @@
     <script src="vendor/jquery-bracket/jquery.bracket.min.js"></script>
     <!-- Teams -->
     <script src="scripts/services/setupTournamentService.js"></script>
+    <script src="scripts/services/teamsService.js"></script>
     <script src="scripts/controllers/tournament/tournamentSetup.js"></script>
+    <script src="scripts/controllers/teams/teams.js"></script>
     <!-- Directives -->
     <script src="scripts/directives/datetimepicker.js"></script>
     <script src="scripts/directives/slidetable.js"></script>

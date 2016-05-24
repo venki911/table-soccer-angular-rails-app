@@ -80,7 +80,13 @@ angular
         templateUrl: 'views/tournaments/setup_tournament.html',
         controller: 'TournamentSetupCtrl',
         controllerAs: 'setup'
-      });
+      })
+      .state('teams', {
+      url: '/teams',
+      templateUrl: 'views/teams/index.html',
+      controller: 'TeamsCtrl',
+      controllerAs: 'teams'
+    });
     $urlRouterProvider.otherwise('/');
     // $locationProvider.html5Mode(true);
   })

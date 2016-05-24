@@ -1,0 +1,29 @@
+<section>
+  <div class="container">
+    <h1>Список команд</h1>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+        <input type="text" class="form-control" placeholder="Поиск команд" ng-model="searchTeam">
+      </div>
+    </div>
+    <table class="table">
+      <tr ng-repeat=" team in teams.teams | filter:searchTeam">
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="newName" ng-value="team.team.name" ng-show="user.id === team.players[0].id || user.id === team.players[1].id">
+            <span style="padding-left: 13px" ng-if="!(user.id === team.players[0].id || user.id === team.players[1].id)">{{team.team.name}}</span>
+            <span class="input-group-btn">
+              <button class="btn btn-default"
+                      type="button"
+                      ng-if="user.id === team.players[0].id || user.id === team.players[1].id"
+                      ng-click="teams.changeName(team.team, newName)"
+                      ng-disabled="!newName">Изменить</button>
+            </span>
+          </div>
+        </td>
+
+      </tr>
+    </table>
+  </div>
+</section>

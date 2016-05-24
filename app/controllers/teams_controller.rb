@@ -5,7 +5,15 @@ class TeamsController < ApplicationController
   USER_COLUMNS = [:id, :first_name,:last_name, :avatar]
 
   def index
-    respond_with Team.select(COLUMNS).order(:name)
+    obj = []
+    Team.select(COLUMNS).order(:name).each do |team|
+      obj << {
+          team: team,
+          players: team.users
+      }
+    end
+
+    render json: obj
   end
 
   def show
@@ -36,6 +44,17 @@ class TeamsController < ApplicationController
     end
 
 
+  end
+
+  def update
+    @team = Team.find_by_id!(params[:id])
+    if @team.users.find_by_id!(current_user.id).present?
+      if @team.update_attributes(name: params[:name])
+        head :no_content
+      else
+        render json: @team.errors, status: :unprocessable_entity
+      end
+    end
   end
 
 end
