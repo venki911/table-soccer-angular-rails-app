@@ -87,6 +87,10 @@ class UserResultsController < ApplicationController
           end
         end
       end
+
+      if tournament.matches.last.status == 'finished'
+        UserResult.change_users_rank(tournament)
+      end
       first_tour
     end
 

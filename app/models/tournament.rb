@@ -16,7 +16,7 @@ class Tournament < ActiveRecord::Base
 
   enum tourn_type: {
       current: 1,
-      finsihed: 2,
+      finished: 2,
       'not started': 3
   }
 
