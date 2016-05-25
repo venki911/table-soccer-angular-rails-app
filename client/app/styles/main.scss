@@ -88,8 +88,26 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+  .main-block {
+    height: 450px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main-block {
+    height: 400px;
+  }
 }
 
+@media screen and (min-width: 992px) {
+  .main-block {
+    height: 550px;
+  }
+}
+@media screen and (min-width: 1170px) {
+  .main-block {
+    height: 650px;
+  }
+}
 span {
   &.glyphicon:hover {
     cursor: pointer;
@@ -247,7 +265,7 @@ section {
 }
 
 .main-block {
-  height: 600px;
+  //height: 650px;
   background: url(../vendor/template/assets/pexels-photo-1.jpg) no-repeat center center;
   background-size: cover;
 }
@@ -256,3 +274,5 @@ section {
     display: none;
   }
 }
+
+

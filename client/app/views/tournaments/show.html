@@ -1,8 +1,6 @@
 <section>
   <div class="container">
-    <!--<div class="row">-->
-      <a ng-if="user.is_admin" ui-sref="setup_tournament({id: tournament.tournament.id})" class="btn btn-primary btn-flat">Создать команды и матчи</a>
-    <!--</div>-->
+    <a ng-if="user.is_admin" ui-sref="setup_tournament({id: tournament.tournament.id})" class="btn btn-primary btn-flat">Создать команды и матчи</a>
     <br><br>
     <div class="row">
       <div class="col-md-3">
@@ -41,7 +39,7 @@
               <tr>
                 <th>Место</th>
                 <th>Команда</th>
-                <th>Сыграных игр</th>
+                <th>Кол-во игр</th>
                 <th>Побед</th>
                 <th>Поражений</th>
                 <th>З - П голы</th>
@@ -49,14 +47,14 @@
                 <th>Очки</th>
               </tr>
               <tr ng-repeat="result in tournament.results">
-                <td>{{result.place}}</td>
-                <td>{{result.team.name}}</td>
-                <td class="text-center">{{result.played_games}}</td>
-                <td class="text-center">{{result.wins}}</td>
-                <td class="text-center">{{result.loses}}</td>
-                <td class="text-center">{{result.scored_goals}} - {{result.missed_goals}}</td>
-                <td class="text-center">{{result.goals_difference}}</td>
-                <td class="text-center">{{result.points}}</td>
+                <td class="col-md-3 col-xs-1">{{result.place}}</td>
+                <td class="col-md-3 col-xs-1">{{result.team.name}}</td>
+                <td class="col-xs-1 text-center">{{result.played_games}}</td>
+                <td class="col-xs-1 text-center">{{result.wins}}</td>
+                <td class="col-xs-1 text-center">{{result.loses}}</td>
+                <td class="col-xs-1 text-center">{{result.scored_goals}} - {{result.missed_goals}}</td>
+                <td class="col-xs-1 text-center">{{result.goals_difference}}</td>
+                <td class="col-xs-1 text-center">{{result.points}}</td>
               </tr>
             </table>
           </div>
@@ -96,13 +94,13 @@
                 </tr>
                 <tr dir-paginate-start="match in tournament.matches | orderBy:sortType:sortReverse | filter:searchMatch | itemsPerPage:5" class="main"
                     ng-show="match.match_teams[0].name || match.match_teams[1].name" slide-table>
-                  <td class="col-md-3">{{match.match_teams[0].name}} VS {{match.match_teams[1].name}}</td>
-                  <td class="col-md-1">{{match.match.match_type | matchType}}</td>
-                  <td class="col-md-2">{{match.match.datetime | date:'d MMM y H:mm'}}</td>
-                  <td class="col-md-1">{{match.match.status | status}}</td>
-                  <td class="col-md-1">{{match.match.tour | matchTour}}<span ng-if="!match.match.tour" class='glyphicon glyphicon-minus'></span></td>
-                  <td class="col-md-2">{{tournament.findWinnerTeam(match.match.winner_team_id)}}</td>
-                  <td class="col-md-1"><span class="glyphicon glyphicon-info-sign pull-right"></span></td>
+                  <td class="col-md-3 col-xs-1">{{match.match_teams[0].name}} VS {{match.match_teams[1].name}}</td>
+                  <td class="col-xs-1">{{match.match.match_type | matchType}}</td>
+                  <td class="col-xs-2">{{match.match.datetime | date:'d MMM y H:mm'}}</td>
+                  <td class="col-xs-1">{{match.match.status | status}}</td>
+                  <td class="col-xs-1">{{match.match.tour | matchTour}}<span ng-if="!match.match.tour" class='glyphicon glyphicon-minus'></span></td>
+                  <td class="col-xs-2">{{tournament.findWinnerTeam(match.match.winner_team_id)}}</td>
+                  <td class="col-xs-1"><span class="glyphicon glyphicon-info-sign pull-right"></span></td>
                 </tr>
                 <tr dir-paginate-end>
                   <td colspan="7" class="detailed">
