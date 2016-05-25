@@ -28,6 +28,16 @@ angular
   .constant('defaultHost', {
     url: '/api'//'http://localhost:3000'
   })
+  .filter('status', function () {
+    return function (input) {
+      switch (input) {
+        case 'current': return 'текущий'; break;
+        case 'finished': return 'закончен'; break;
+        case 'not started': return 'не начат'; break;
+
+      }
+    }
+  })
   .config(function ($authProvider, $stateProvider, $urlRouterProvider, $locationProvider, defaultHost) {
     $authProvider.configure({
       apiUrl: defaultHost.url,

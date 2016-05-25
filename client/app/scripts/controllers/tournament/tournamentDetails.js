@@ -16,7 +16,24 @@
       '$uibModal',
       'tournamentService',
       TournamentDetailsCtrl
-    ]);
+    ])
+    .filter('matchType', function () {
+      return function (input) {
+        switch (input) {
+          case 'regular': return 'регулярный'; break;
+          case 'play-off': return 'плэй-офф'; break;
+        }
+      }
+    })
+    .filter('matchTour', function () {
+      return function (input) {
+        switch (input) {
+          case 'final': return 'финал'; break;
+          case '3rd place': return '3-е место'; break;
+          default: return input; break;
+        }
+      }
+    });
 
   function TournamentDetailsCtrl($scope, $state, $uibModal, tournamentService) {
     var vm = this;

@@ -52,13 +52,13 @@
             <table class="table">
               <tr>
                 <th>Название</th>
-                <th>Тип</th>
+                <th>Статус</th>
                 <th>Место</th>
                 <th>Дата/Время</th>
               </tr>
               <tr ng-repeat=" tournament in profile.tournaments">
                 <td><a ui-sref="tournaments_show({id: tournament.id})">{{tournament.name}}</a></td>
-                <td>{{tournament.tourn_type}}</td>
+                <td>{{tournament.tourn_type | status}}</td>
                 <td>{{tournament.place}}</td>
                 <td>{{tournament.datetime | date: 'MMM d, y H:mm'}}</td>
               </tr>

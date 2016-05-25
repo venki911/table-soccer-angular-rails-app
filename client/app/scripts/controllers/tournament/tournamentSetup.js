@@ -27,19 +27,19 @@
     vm.tour = 0;
     vm.systems = [
       {
-        name: 'Best of 1',
+        name: 'Лучший из 1',
         count: 1
       },
       {
-        name: 'Best of 2',
+        name: 'Лучший из 2',
         count: 2
       },
       {
-        name: 'Best of 3',
+        name: 'Лучший из 3',
         count: 3
       },
       {
-        name: 'Best of 5',
+        name: 'Лучший из 5',
         count: 5
       }
     ];
@@ -57,7 +57,7 @@
         id: 3
       },
       {
-        name: 'final',
+        name: 'Финал',
         id: 4
       }
     ];

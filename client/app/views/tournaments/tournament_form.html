@@ -25,10 +25,11 @@
           id="tournamentType"
           class="form-control"
           ng-model="tournament.tourn_type"
+          ng-disabled="tournament.tourn_type === 'finished'"
   >
     <option value="current">текущий</option>
     <option value="not started">не начат</option>
-
+    <option value="finished">закончен</option>
   </select>
 </div>
 <div class="form-group" ng-class="{ 'has-error' : form.tournamentPlace.$invalid }">
