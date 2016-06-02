@@ -1,15 +1,72 @@
-<!--<div class="alert alert-warning" role="alert" ng-show="error">-->
-  <!--{{error}}-->
-<!--</div>-->
 <div class="main-block">
   <div class="container">
+    <div ng-if="!user.id" class="col-md-6 col-md-offset-6">
+        <div>
+          <form class="form-signin wow fadeInUp" ng-submit="handleRegBtnClick()" role="form" ng-init="registrationForm = {}" autocomplete="false">
+            <div class="login-wrap">
+              <p>Заполните поля</p>
+              <div class="form-group">
+                <label for="first_name">Имя</label>
+                <input type="text"
+                       name="first_name"
+                       id="first_name"
+                       ng-model="registrationForm.first_name"
+                       required="required"
+                       class="form-control">
+              </div>
 
+              <div class="form-group">
+                <label for="last_name">Фамилия</label>
+                <input type="text"
+                       name="last_name"
+                       id="last_name"
+                       ng-model="registrationForm.last_name"
+                       required="required"
+                       class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Эл. адрес</label>
+                <input type="email"
+                       name="email"
+                       id="email"
+                       ng-model="registrationForm.email"
+                       required="required"
+                       class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password"
+                       name="password"
+                       id="password"
+                       ng-model="registrationForm.password"
+                       required="required"
+                       class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="password_confirmation">Подтвердите пароль</label>
+                <input type="password"
+                       name="password_confirmation"
+                       id="password_confirmation"
+                       ng-model="registrationForm.password_confirmation"
+                       required="required"
+                       class="form-control">
+              </div>
+
+              <button type="submit" class="btn btn-lg btn-login btn-block">Регистрация</button>
+              <div class="registration text-center">
+                Есть аккаунт?
+                <a class="" ui-sref="sign_in">
+                  Авторизация
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+    <h1 ng-if="user.id">Добро пожаловать {{user.first_name}}</h1>
   </div>
 </div>
 
-<!--<div class="jumbotron">-->
-  <!--<a ng-if="!user.id" ui-sref="sign_in" class="btn btn-primary">Sign in</a>-->
-  <!--<a ng-if="!user.id" ui-sref="sign_up" class="btn btn-success">Sign up</a>-->
-  <!--<button ng-if="!user.id" ng-click="authenticate('facebook')">Facebook</button>-->
-  <!--<h1 ng-if="user.id">{{user.first_name}} welcome!</h1>-->
-<!--</div>-->

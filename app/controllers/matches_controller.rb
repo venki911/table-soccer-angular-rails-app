@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  # before_action :is_admin?
+  #before_action :is_admin?
 
   COLUMNS = [:id, :tournament_id, :match_type, :tour, :datetime, :status, :winner_team_id]
 

@@ -30,7 +30,7 @@ class Team < ActiveRecord::Base
         user2 = users2.pop
       end
       team = Team.create(
-          name: "#{user1.first_name} #{user1.last_name[0]}. + #{user2.first_name} #{user2.last_name[0]}.",
+          name: "#{user1.first_name[0]}. #{user1.last_name} + #{user2.first_name[0]}. #{user2.last_name}",
           tournament_id: tournament_id)
       user1.teams_users.create(team: team)
       user2.teams_users.create(team: team)

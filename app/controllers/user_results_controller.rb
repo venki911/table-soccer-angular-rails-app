@@ -1,10 +1,9 @@
 class UserResultsController < ApplicationController
-  # before_action :is_admin?
+  #before_action :is_admin?
 
   def create
     round_ids = []
-
-    params[:users_results].each do |user_result|
+    params[:users_results].flatten.each do |user_result|
       UserResult.where(user_id: user_result['user_id'], match_id: user_result['match_id'], team_id: user_result['team_id'],
                        match_round_id: user_result['match_round_id']).destroy_all
       UserResult.create(user_id: user_result['user_id'], match_id: user_result['match_id'], team_id: user_result['team_id'],

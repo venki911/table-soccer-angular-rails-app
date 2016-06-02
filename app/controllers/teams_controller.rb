@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :is_admin?, only: [:new, :create]
+ # before_action :is_admin?, only: [:new, :create]
 
   COLUMNS = [:id, :name, :tournament_id]
   USER_COLUMNS = [:id, :first_name,:last_name, :avatar]
@@ -21,7 +21,7 @@ class TeamsController < ApplicationController
   # end
 
   def new
-    response = User.select(USER_COLUMNS).order(:first_name,:last_name)
+    response = User.where(is_admin: false).select(USER_COLUMNS).order(:first_name,:last_name)
     respond_with response
   end
 

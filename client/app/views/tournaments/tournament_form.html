@@ -41,7 +41,7 @@
          ng-model="tournament.place"
          ng-value="tournament.place"
          required>
-  <span class="help-block" ng-show="form.tournamentPlace.$invalid">Required</span>
+  <span class="help-block" ng-show="form.tournamentPlace.$invalid">Обязательное поле</span>
 </div>
 <div class="form-group" ng-class="{ 'has-error' : form.tournamentDatetime.$invalid }">
   <label for="tournamentDatetime">Дата/Время</label>
@@ -52,5 +52,5 @@
          ng-model="tournament.datetime"
          ng-value="tournament.datetime" date-time-picker=""
          required>
-  <span class="help-block" ng-show="form.tournamentDatetime.$invalid">Required</span>
+  <span class="help-block" ng-show="form.tournamentDatetime.$invalid">Обязательное поле</span>
 </div>

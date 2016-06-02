@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
-  # before_action :is_admin?, only: [:create, :update, :destroy]
-  # skip_before_filter :verify_authenticity_token
+  #before_action :is_admin?, only: [:create, :update, :destroy]
+
   COLUMNS = [:id, :name, :tourn_type, :place, :datetime]
 
   def index
@@ -8,33 +8,6 @@ class TournamentsController < ApplicationController
   end
 
   def show
-    # tournament_info = $redis.get("tournament_info")
-    # if tournament_info.nil?
-    #
-    #   @tournament = Tournament.select(COLUMNS).find_by_id!(params[:id])
-    #   @matches = []
-    #
-    #
-    #   @tournament.matches.order(:match_type, :datetime).each do |match|
-    #     @matches << {
-    #         match: match,
-    #         match_rounds: match.match_rounds.group_by(&:round_number),
-    #         match_teams: match.teams.select(:id, :name).order(:id).uniq
-    #     }
-    #   end
-    #
-    #   tournament_info = {
-    #       tournament: @tournament,
-    #       teams: @tournament.teams,
-    #       matches: @matches,
-    #       results_table: @tournament.results_table,
-    #       playoff_bracket: @tournament.playoff_bracket
-    #   }
-    #
-    #   $redis.set('tournament_info', tournament_info.to_json)
-    #   $redis.expire('tournament_info', 1.hour.to_i)
-    # end
-    # respond_with tournament_info
     @tournament = Tournament.select(COLUMNS).find_by_id!(params[:id])
     @matches = []
 
